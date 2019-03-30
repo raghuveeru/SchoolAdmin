@@ -19,8 +19,8 @@ notificationRoute.post('/retrievefornotifications', (req, res, next) => {
         try {
             updateNotification([req.body[TEACHER], req.body[NOTIFICATION]], (err, data) => {
                 
-                 if(!err){        
-                     studentTeacher.getCommonStudentsByTeachers(req.body[TEACHER], (err, data) => {
+                 if(!err){    
+                     studentTeacher.getActiveStudentsByTeachers(req.body[TEACHER], (err, data) => {
                          if(!err){                    
                              data.map(std=>{
                                  students.push(std.student);
