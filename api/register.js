@@ -19,22 +19,18 @@ registerRoute.post('/register', (req, res, next) => {
 
             try{                
                 teacherTable.updateTeacher(teacher, (err, teacherData) => {                       
-                    console.log("gsfdgdfg"+err);        
                     if(!err){
                     students.map(e =>{
                         studentTable.updateStudent(e, (studenterr, data) => {
-                        console.log(studenterr);
-                        if(!studenterr){          
-                            console.log("hjkhk");
-                            teacherStudentTable.updateTeacherStudentTable(e, teacher, (err, res) => {
-                                console.log("Student Id", e, teacher);
-                            });   
-                            res.status(204).json();         
-                    }
-                    });
+                            if(!studenterr){          
+                                teacherStudentTable.updateTeacherStudentTable(e, teacher, (err, res) => {
+                                });                                    
+                            }
+                        });
                     });
                 }
                 });
+                res.status(204).json();    
             
             }catch(err) {
                 res.status(500).json({

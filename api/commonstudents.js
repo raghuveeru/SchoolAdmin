@@ -6,7 +6,6 @@ const teacherStudetnTable = require('../db/teacherStudentTable');
 const expectedParam = 'teacher';
 
 commonStudentsRoute.get('/commonstudents', (req, res, next) => {
-    console.log("params");
     const students = [];
     if(!req.query[expectedParam]){
         res.status(404).json({
@@ -15,7 +14,6 @@ commonStudentsRoute.get('/commonstudents', (req, res, next) => {
     }else{        
         try
         {
-        console.log(req.query[expectedParam]);
             teacherStudetnTable.getCommonStudentsByTeachers(req.query[expectedParam], (err, data) => {
                 if(!err){                    
                     data.map(std=>{

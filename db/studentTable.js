@@ -7,7 +7,6 @@ const query = {
 
 const updateStudent = (values, cb) => {
     db.query(query.insert, [values,values], (err, data) => {
-        console.log(err);
         if(err){
             cb(err)
         }else{
